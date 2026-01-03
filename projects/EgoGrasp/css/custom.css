@@ -1,0 +1,132 @@
+/* Custom styles for academic paper website */
+
+.publication-title {
+    margin-bottom: 1rem !important;
+}
+
+.subtitle {
+    margin-top: 0.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.publication-authors {
+    margin-bottom: 1rem;
+}
+
+.author-block {
+    margin: 0 0.5rem;
+}
+
+.publication-links {
+    margin-top: 1.5rem;
+}
+
+.link-block {
+    margin: 0 0.25rem;
+}
+
+/* Video and image placeholders */
+.video-container,
+.pipeline-placeholder,
+.video-placeholder-small,
+.image-placeholder {
+    background: #f5f5f5;
+    border: 2px dashed #dbdbdb;
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-placeholder-small {
+    min-height: 200px;
+    padding: 2rem 1rem;
+}
+
+.image-placeholder {
+    min-height: 250px;
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.pipeline-placeholder {
+    min-height: 400px;
+}
+
+/* Box styling */
+.box {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+.table.is-striped tbody tr.is-selected {
+    background-color: #eff6ff;
+}
+
+.table.is-striped tbody tr.is-selected:hover {
+    background-color: #dbeafe;
+}
+
+/* Code blocks */
+pre {
+    background: #1f2937;
+    color: #e5e7eb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+    font-size: 0.9rem;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Video items */
+.video-item {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #f5f5f5;
+    padding: 3rem 1.5rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .publication-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .author-block {
+        display: block;
+        margin: 0.25rem 0;
+    }
+    
+    .link-block {
+        display: block;
+        margin: 0.5rem 0;
+    }
+    
+    .video-container,
+    .pipeline-placeholder,
+    .image-placeholder {
+        min-height: 200px;
+        padding: 2rem 1rem;
+    }
+}
