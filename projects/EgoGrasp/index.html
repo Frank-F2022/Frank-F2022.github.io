@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="[Project Description]">
-    <meta name="keywords" content="[Keywords]">
+    <meta name="description" content="EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos">
+    <meta name="keywords" content="Hand-Object Interaction, Egocentric Vision, 3D Reconstruction, Computer Vision">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>[Project Title]</title>
+    <title>EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -20,25 +20,37 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">[Paper Title]</h1>
-                        <h2 class="subtitle is-4">([Conference/Journal Year])</h2>
+                        <h1 class="title is-2 publication-title">EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos</h1>
                         
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block">[Author 1]<sup>1</sup></span>
-                            <span class="author-block">[Author 2]<sup>1</sup></span>
-                            <span class="author-block">[Author 3]<sup>2</sup></span>
-                            <span class="author-block">[Author 4]<sup>1</sup></span>
+                            <span class="author-block"><a href="https://frank-f2022.github.io/" target="_blank">Hongming Fu</a><sup>1</sup></span>
+                            <span class="author-block"><a href="https://wenjiawang0312.github.io/" target="_blank">Wenjia Wang</a><sup>2†</sup></span>
+                            <span class="author-block">Xiaozhen Qiao<sup>3</sup></span>
+                            <span class="author-block"><a href="https://shuoyang-1998.github.io/" target="_blank">Shuo Yang</a><sup>4</sup></span>
+                            <span class="author-block"><a href="https://scholar.google.com/citations?user=k2SF4M0AAAAJ&hl=en" target="_blank">Zheng Liu</a><sup>5</sup></span>
+                            <span class="author-block"><a href="https://www.bozhao.me/" target="_blank">Bo Zhao</a><sup>1‡</sup></span>
                         </div>
 
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block"><sup>1</sup>[Institution 1]</span>
-                            <span class="author-block"><sup>2</sup>[Institution 2]</span>
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University</span>
+                            <span class="author-block"><sup>2</sup>The University of Hong Kong</span>
+                        </div>
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>3</sup>University of Science and Technology of China</span>
+                            <span class="author-block"><sup>4</sup>Harbin Institute of Technology (Shenzhen)</span>
+                        </div>
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>5</sup>Beijing Academy of Artificial Intelligence</span>
+                        </div>
+                        <div class="is-size-7 publication-authors" style="margin-top: 10px;">
+                            <span class="author-block"><sup>†</sup>Project lead</span>
+                            <span class="author-block"><sup>‡</sup>Corresponding author</span>
                         </div>
 
                         <div class="column has-text-centered">
                             <div class="publication-links">
                                 <span class="link-block">
-                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="https://arxiv.org/abs/2601.01050" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon"><i class="ai ai-arxiv"></i></span>
                                         <span>arXiv</span>
                                     </a>
@@ -52,7 +64,7 @@
                                 <span class="link-block">
                                     <a href="#" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon"><i class="fab fa-github"></i></span>
-                                        <span>Code</span>
+                                        <span>Code (Comming soon)</span>
                                     </a>
                                 </span>
                             </div>
@@ -66,11 +78,8 @@
     <!-- Teaser Video/Image -->
     <section class="hero teaser">
         <div class="container is-max-desktop">
-            <div class="hero-body">
-                <div class="video-container">
-                    <p class="has-text-centered is-size-5 has-text-grey">[Main Demo Video/Image]</p>
-                    <p class="has-text-centered is-size-6 has-text-grey-light">Place your teaser at assets/videos/teaser.mp4</p>
-                </div>
+            <div class="hero-body" style="text-align: center;">
+                <img src="assets/images/teaser-5.png" alt="EgoGrasp Teaser" style="width: 50%; height: auto;">
             </div>
         </div>
     </section>
@@ -82,9 +91,7 @@
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
-                        <p>[First paragraph: Background and motivation]</p>
-                        <p>[Second paragraph: Main approach and technical contributions]</p>
-                        <p>[Third paragraph: Results and impact]</p>
+                        <p>We propose <strong>EgoGrasp</strong>, the first method to reconstruct world-space hand-object interactions (W-HOI) from egocentric monocular videos with dynamic cameras in the wild. Accurate W-HOI reconstruction is critical for understanding human behavior and enabling applications in embodied intelligence and virtual reality. However, existing hand-object interactions (HOI) methods are limited to single images or camera coordinates, failing to model temporal dynamics or consistent global trajectories. Some recent approaches attempt world-space hand estimation but overlook object poses and HOI constraints. Their performance also suffers under severe camera motion and frequent occlusions common in egocentric in-the-wild videos. To address these challenges, we introduce a multi-stage framework with a robust pre-process pipeline built on newly developed spatial intelligence models, a whole-body HOI prior model based on decoupled diffusion models, and a multi-objective test-time optimization paradigm. Our HOI prior model is template-free and scalable to multiple objects. In experiments, we prove our method achieving state-of-the-art performance in W-HOI reconstruction.</p>
                     </div>
                 </div>
             </div>
@@ -96,10 +103,7 @@
         <div class="container is-max-desktop">
             <h2 class="title is-3 has-text-centered">Method Overview</h2>
             <div class="hero-body">
-                <div class="pipeline-placeholder">
-                    <p class="has-text-centered is-size-5 has-text-grey">[Pipeline Diagram]</p>
-                    <p class="has-text-centered is-size-6 has-text-grey-light">Place at assets/images/pipeline.png</p>
-                </div>
+                <img src="assets/images/pipeline.png" alt="EgoGrasp Pipeline" style="width: 100%; height: auto;">
             </div>
         </div>
     </section>
@@ -174,11 +178,14 @@
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h2 class="title is-3 has-text-centered">BibTeX</h2>
-            <pre><code>@article{[key],
-  title={[Paper Title]},
-  author={[Authors]},
-  journal={[Journal/Conference]},
-  year={[Year]}
+            <pre><code>@misc{fu2026egograspworldspacehandobjectinteraction,
+      title={EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos}, 
+      author={Hongming Fu and Wenjia Wang and Xiaozhen Qiao and Shuo Yang and Zheng Liu and Bo Zhao},
+      year={2026},
+      eprint={2601.01050},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.01050}, 
 }</code></pre>
         </div>
     </section>
