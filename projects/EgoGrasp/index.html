@@ -1,214 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos">
-    <meta name="keywords" content="Hand-Object Interaction, Egocentric Vision, 3D Reconstruction, Computer Vision">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EgoGrasp reconstructs world-space hand-object interactions from dynamic egoview videos with open-vocabulary objects."
+    />
     <title>EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-backdrop"></div>
+      <div class="container hero-container">
+        <h1>EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos</h1>
 
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="css/custom.css">
-</head>
-
-<body>
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column has-text-centered">
-                        <h1 class="title is-2 publication-title">EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos</h1>
-                        
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block"><a href="https://frank-f2022.github.io/" target="_blank">Hongming Fu</a><sup>1</sup></span>
-                            <span class="author-block"><a href="https://wenjiawang0312.github.io/" target="_blank">Wenjia Wang</a><sup>2†</sup></span>
-                            <span class="author-block">Xiaozhen Qiao<sup>3</sup></span>
-                            <span class="author-block"><a href="https://shuoyang-1998.github.io/" target="_blank">Shuo Yang</a><sup>4</sup></span>
-                            <span class="author-block"><a href="https://scholar.google.com/citations?user=k2SF4M0AAAAJ&hl=en" target="_blank">Zheng Liu</a><sup>5</sup></span>
-                            <span class="author-block"><a href="https://www.bozhao.me/" target="_blank">Bo Zhao</a><sup>1‡</sup></span>
-                        </div>
-
-                        <div class="is-size-6 publication-authors">
-                            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University</span>
-                            <span class="author-block"><sup>2</sup>The University of Hong Kong</span>
-                        </div>
-                        <div class="is-size-6 publication-authors">
-                            <span class="author-block"><sup>3</sup>University of Science and Technology of China</span>
-                            <span class="author-block"><sup>4</sup>Harbin Institute of Technology (Shenzhen)</span>
-                        </div>
-                        <div class="is-size-6 publication-authors">
-                            <span class="author-block"><sup>5</sup>Beijing Academy of Artificial Intelligence</span>
-                        </div>
-                        <div class="is-size-7 publication-authors" style="margin-top: 10px;">
-                            <span class="author-block"><sup>†</sup>Project lead</span>
-                            <span class="author-block"><sup>‡</sup>Corresponding author</span>
-                        </div>
-
-                        <div class="column has-text-centered">
-                            <div class="publication-links">
-                                <span class="link-block">
-                                    <a href="https://arxiv.org/abs/2601.01050" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon"><i class="ai ai-arxiv"></i></span>
-                                        <span>arXiv</span>
-                                    </a>
-                                </span>
-                                <span class="link-block">
-                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                                        <span>Paper</span>
-                                    </a>
-                                </span>
-                                <span class="link-block">
-                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon"><i class="fab fa-github"></i></span>
-                                        <span>Code (Comming soon)</span>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="authors">
+          <div class="authors-row">
+            <span class="author-name"><a href="https://frank-f2022.github.io/">Hongming Fu</a><sup>1</sup></span>
+            <span class="author-name"><a href="https://wenjiawang0312.github.io/">Wenjia Wang</a><sup>2,†</sup></span>
+            <span class="author-name">Xiaozhen Qiao<sup>3</sup></span>
+            <span class="author-name"><a href="https://rolpotamias.github.io/">Rolandos Alexandros Potamias</a><sup>4</sup></span>
+          </div>
+          <div class="authors-row">
+            <span class="author-name"><a href="https://i.cs.hku.hk/~taku/">Taku Komura</a><sup>2</sup></span>
+            <span class="author-name"><a href="https://shuoyang-1998.github.io/">Shuo Yang</a><sup>5</sup></span>
+            <span class="author-name"><a href="https://scholar.google.com/citations?user=k2SF4M0AAAAJ&hl=en">Zheng Liu</a><sup>6</sup></span>
+            <span class="author-name"><a href="https://www.bozhao.me/">Bo Zhao</a><sup>1,‡</sup></span>
+          </div>
         </div>
-    </section>
 
-    <!-- Teaser Video/Image -->
-    <section class="hero teaser">
-        <div class="container is-max-desktop">
-            <div class="hero-body" style="text-align: center;">
-                <img src="assets/images/teaser-5.png" alt="EgoGrasp Teaser" style="width: 50%; height: auto;">
-            </div>
+        <p class="affiliations">
+          <span><sup>1</sup>Shanghai Jiao Tong University</span>
+          <span><sup>2</sup>The University of Hong Kong</span>
+          <span><sup>3</sup>University of Science and Technology of China</span>
+          <span><sup>4</sup>Imperial College London</span>
+          <span><sup>5</sup>Harbin Institute of Technology (Shenzhen)</span>
+          <span><sup>6</sup>Beijing Academy of Artificial Intelligence</span>
+        </p>
+        <p class="author-note">† Project lead. ‡ Corresponding author.</p>
+
+        <div class="button-row">
+          <a class="btn btn-arxiv" href="https://arxiv.org/abs/2601.01050">
+            <i class="ai ai-arxiv"></i>
+            <span>arXiv</span>
+          </a>
+          <a class="btn btn-paper" href="assets/EgoGrasp.pdf">
+            <i class="fas fa-file-pdf"></i>
+            <span>PDF</span>
+          </a>
+          <a class="btn btn-github" href="https://github.com/MINT-SJTU/EgoGrasp">
+            <i class="fab fa-github"></i>
+            <span>Code (Coming soon)</span>
+          </a>
         </div>
-    </section>
+      </div>
+    </header>
 
-    <!-- Abstract -->
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Abstract</h2>
-                    <div class="content has-text-justified">
-                        <p>We propose <strong>EgoGrasp</strong>, the first method to reconstruct world-space hand-object interactions (W-HOI) from egocentric monocular videos with dynamic cameras in the wild. Accurate W-HOI reconstruction is critical for understanding human behavior and enabling applications in embodied intelligence and virtual reality. However, existing hand-object interactions (HOI) methods are limited to single images or camera coordinates, failing to model temporal dynamics or consistent global trajectories. Some recent approaches attempt world-space hand estimation but overlook object poses and HOI constraints. Their performance also suffers under severe camera motion and frequent occlusions common in egocentric in-the-wild videos. To address these challenges, we introduce a multi-stage framework with a robust pre-process pipeline built on newly developed spatial intelligence models, a whole-body HOI prior model based on decoupled diffusion models, and a multi-objective test-time optimization paradigm. Our HOI prior model is template-free and scalable to multiple objects. In experiments, we prove our method achieving state-of-the-art performance in W-HOI reconstruction.</p>
-                    </div>
-                </div>
-            </div>
+    <main>
+      <section class="section section-tight">
+        <div class="container narrow">
+          <figure class="media-card media-card--hero">
+            <img
+              src="assets/img/figures/teaser.png"
+              alt="EgoGrasp teaser figure"
+              width="7623"
+              height="1906"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption>
+              (a) shows that EgoGrasp reconstructs world-space hand-object interactions from egocentric videos with dynamic cameras.
+              (b) and (c) highlight the superior performance of EgoGrasp in estimating hand-object interactions in world space.
+            </figcaption>
+          </figure>
         </div>
-    </section>
+      </section>
 
-    <!-- Method Pipeline -->
-    <section class="section">
-        <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">Method Overview</h2>
-            <div class="hero-body">
-                <img src="assets/images/pipeline.png" alt="EgoGrasp Pipeline" style="width: 100%; height: auto;">
-            </div>
+      <section class="section">
+        <div class="container narrow">
+          <h2>Abstract</h2>
+          <div class="abstract-card">
+            <p>
+              We propose <strong>EgoGrasp</strong>, the first method to reconstruct world-space hand-object interactions (W-HOI)
+              from dynamic egoview videos, supporting open-vocabulary objects. Accurate W-HOI reconstruction is critical for
+              embodied intelligence yet remains challenging. Existing HOI methods are largely restricted to local camera
+              coordinates or single frames, failing to capture global temporal dynamics. While some recent approaches attempt
+              world-space hand estimation, they overlook object poses and HOI constraints. Moreover, previous HOI estimation
+              methods either fail to handle open-set categories due to their reliance on object templates or employ
+              differentiable rendering that requires per-instance optimization, resulting in prohibitive computational costs.
+              Finally, frequent occlusions in egocentric videos severely degrade performance.
+            </p>
+            <p>
+              To overcome these challenges, we propose a multi-stage framework: (i) a robust pre-processing pipeline leveraging
+              vision foundation models for initial 3D scene, hand and object reconstruction; (ii) a body-guided diffusion model
+              that incorporates explicit egocentric body priors for hand pose estimation; and (iii) an HOI-prior-informed
+              diffusion model for hand-aware 6DoF pose infilling, ensuring physically plausible and temporally consistent W-HOI
+              estimation. We experimentally demonstrate that EgoGrasp can achieve state-of-the-art performance in W-HOI
+              reconstruction, handling multiple and open vocabulary objects robustly.
+            </p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Video Results -->
-    <section class="section">
-        <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">Video Demonstrations</h2>
-            <div class="columns is-multiline">
-                <div class="column is-one-third">
-                    <div class="video-item">
-                        <div class="video-placeholder-small">
-                            <p>[Demo 1]</p>
-                        </div>
-                        <p class="has-text-centered">[Demo 1 caption]</p>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="video-item">
-                        <div class="video-placeholder-small">
-                            <p>[Demo 2]</p>
-                        </div>
-                        <p class="has-text-centered">[Demo 2 caption]</p>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="video-item">
-                        <div class="video-placeholder-small">
-                            <p>[Demo 3]</p>
-                        </div>
-                        <p class="has-text-centered">[Demo 3 caption]</p>
-                    </div>
-                </div>
-            </div>
+      <section class="section section-muted">
+        <div class="container">
+          <h2>Method Overview</h2>
+          <figure class="media-card media-card--pipeline">
+            <img
+              src="assets/img/figures/pipelinev2.png"
+              alt="EgoGrasp pipeline"
+              width="2479"
+              height="1011"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <p class="media-caption media-caption--pipeline">
+            <strong>Overview of EgoGrasp.</strong> We propose a three-stage method to recover world-space hand-object interaction
+            from egocentric monocular videos with dynamic cameras: (1) extract 3D attributes with spatial perception models;
+            (2) reconstruct upper body pose with motion prior provided by Body Diffusion; and (3) interpolate discrete 6DoF
+            sequences with HOI Diffusion for spatial, temporal, and contact consistency.
+          </p>
         </div>
-    </section>
+      </section>
 
-    <!-- Qualitative Results -->
-    <section class="section">
-        <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
-            <div class="columns is-multiline">
-                <div class="column is-half">
-                    <div class="image-placeholder">
-                        <p>[Result Image 1]</p>
-                    </div>
-                    <p class="has-text-centered">[Caption 1]</p>
-                </div>
-                <div class="column is-half">
-                    <div class="image-placeholder">
-                        <p>[Result Image 2]</p>
-                    </div>
-                    <p class="has-text-centered">[Caption 2]</p>
-                </div>
-                <div class="column is-half">
-                    <div class="image-placeholder">
-                        <p>[Result Image 3]</p>
-                    </div>
-                    <p class="has-text-centered">[Caption 3]</p>
-                </div>
-                <div class="column is-half">
-                    <div class="image-placeholder">
-                        <p>[Result Image 4]</p>
-                    </div>
-                    <p class="has-text-centered">[Caption 4]</p>
-                </div>
-            </div>
+      <section class="section section-accent" id="demos">
+        <div class="container">
+          <h2>Demo Videos</h2>
+          <div id="demo-spotlight"></div>
         </div>
-    </section>
+      </section>
 
-    <!-- Citation -->
-    <section class="section" id="BibTeX">
-        <div class="container is-max-desktop content">
-            <h2 class="title is-3 has-text-centered">BibTeX</h2>
-            <pre><code>@article{fu2026egograsp,
+      <section class="section">
+        <div class="container">
+          <h2>Qualitative Results</h2>
+          <div id="comparison-galleries" class="comparison-galleries"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <h2 id="bibtex">BibTeX</h2>
+          <div class="code-block">
+            <button class="copy-button" type="button" data-copy-target="bibtex-code">Copy</button>
+            <pre><code id="bibtex-code">@article{fu2026egograsp,
   title={EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos},
-  author={Fu, Hongming and Wang, Wenjia and Qiao, Xiaozhen and Yang, Shuo and Liu, Zheng and Zhao, Bo},
+  author={Fu, Hongming and Wang, Wenjia and Qiao, Xiaozhen and Potamias, Rolandos Alexandros and Komura, Taku and Yang, Shuo and Liu, Zheng and Zhao, Bo},
   journal={arXiv preprint arXiv:2601.01050},
   year={2026}
 }</code></pre>
+          </div>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p>
-                    This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-                </p>
-                <p>
-                    Website template based on <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-                </p>
-            </div>
-        </div>
+      <div class="container narrow">
+        <p>Template style aligned with the unified project pages.</p>
+      </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                const volume = video.getAttribute('data-volume');
-                if (volume) video.volume = parseFloat(volume);
-            });
+      const demoVideos = [
+        { label: "Demo 01", src: "videos/demo/0.webm" },
+        { label: "Demo 02", src: "videos/demo/1.webm" },
+        { label: "Demo 03", src: "videos/demo/2.webm" },
+        { label: "Demo 04", src: "videos/demo/3.webm" },
+        { label: "Demo 05", src: "videos/demo/4.webm" }
+      ];
+
+      const comparisonGroups = [
+        {
+          title: "World-Space HOI Reconstruction on H2O",
+          path: "videos/comparison/hoi/h2o",
+          files: ["0", "1", "2", "3", "4"],
+          aspectRatio: "1600 / 1044",
+          open: true
+        },
+        {
+          title: "World-Space HOI Reconstruction on HOI4D",
+          path: "videos/comparison/hoi/hoi4d",
+          files: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+          aspectRatio: "1600 / 1044",
+          open: false
+        },
+        {
+          title: "World-Space Hand Reconstruction on H2O",
+          path: "videos/comparison/hand/h2o",
+          files: ["0", "1", "2", "3", "4", "5", "6", "7"],
+          aspectRatio: "1600 / 1252",
+          open: false
+        },
+        {
+          title: "World-Space Hand Reconstruction on HOI4D",
+          path: "videos/comparison/hand/hoi4d",
+          files: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+          aspectRatio: "1600 / 1252",
+          open: false
+        }
+      ];
+
+      const demoRoot = document.getElementById("demo-spotlight");
+      const comparisonRoot = document.getElementById("comparison-galleries");
+      const visibilityResumeHandlers = [];
+      const safePlay = async (video) => {
+        try {
+          await video.play();
+        } catch {
+          // Ignore playback rejections from browser autoplay policy.
+        }
+      };
+
+      const createSpotlightViewer = ({ title, items, autoplay = true, aspectRatio = null, variant = "" }) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = `spotlight-viewer${variant ? ` spotlight-viewer--${variant}` : ""}`;
+        if (aspectRatio) {
+          wrapper.style.setProperty("--spotlight-aspect", aspectRatio);
+        }
+        wrapper.innerHTML = `
+          <div class="spotlight-stage">
+            <button type="button" class="spotlight-arrow spotlight-arrow--prev" aria-label="Previous ${title}">&#8249;</button>
+            <div class="spotlight-frame">
+              <video class="spotlight-video" controls playsinline muted loop autoplay preload="auto"></video>
+            </div>
+            <button type="button" class="spotlight-arrow spotlight-arrow--next" aria-label="Next ${title}">&#8250;</button>
+          </div>
+          <div class="spotlight-selector" role="tablist" aria-label="${title} sequences"></div>
+        `;
+
+        const video = wrapper.querySelector(".spotlight-video");
+        const frame = wrapper.querySelector(".spotlight-frame");
+        const prevButton = wrapper.querySelector(".spotlight-arrow--prev");
+        const nextButton = wrapper.querySelector(".spotlight-arrow--next");
+        const selector = wrapper.querySelector(".spotlight-selector");
+
+        let currentIndex = 0;
+        let shouldAutoplay = autoplay;
+        let loadToken = 0;
+        let autoplayRetryTimerIds = [];
+        let suppressPauseTracking = false;
+        let userPausedCurrentItem = false;
+        const selectorButtons = [];
+
+        video.autoplay = true;
+        video.defaultMuted = true;
+        video.muted = true;
+        video.playsInline = true;
+
+        const clearAutoplayRetries = () => {
+          autoplayRetryTimerIds.forEach((timerId) => window.clearTimeout(timerId));
+          autoplayRetryTimerIds = [];
+        };
+
+        const cancelAutoplayForCurrentItem = () => {
+          userPausedCurrentItem = true;
+          clearAutoplayRetries();
+        };
+
+        const queueAutoplay = (token, delays = [0, 120, 320, 700, 1400]) => {
+          clearAutoplayRetries();
+          if (!shouldAutoplay || userPausedCurrentItem) {
+            return;
+          }
+
+          autoplayRetryTimerIds = delays.map((delay) =>
+            window.setTimeout(() => {
+              if (token !== loadToken || !shouldAutoplay || userPausedCurrentItem) {
+                return;
+              }
+              safePlay(video);
+            }, delay)
+          );
+        };
+
+        const requestAutoplay = () => {
+          if (!shouldAutoplay || userPausedCurrentItem) {
+            return;
+          }
+          queueAutoplay(loadToken);
+        };
+
+        const revealFirstFrame = () => {
+          if (!video.paused) return;
+          if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+          if (video.currentTime > 0.0005) return;
+          try {
+            video.currentTime = Math.min(0.001, video.duration / 2);
+          } catch {
+            // Ignore browsers that block programmatic seeking before enough data is ready.
+          }
+        };
+
+        const setCurrent = (nextIndex) => {
+          currentIndex = (nextIndex + items.length) % items.length;
+          const item = items[currentIndex];
+          loadToken += 1;
+          userPausedCurrentItem = false;
+          clearAutoplayRetries();
+          suppressPauseTracking = true;
+          video.pause();
+          suppressPauseTracking = false;
+          video.src = item.src;
+          video.load();
+          selectorButtons.forEach((button, index) => {
+            button.classList.toggle("is-active", index === currentIndex);
+            button.setAttribute("aria-selected", index === currentIndex ? "true" : "false");
+          });
+          selectorButtons[currentIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+          if (shouldAutoplay) {
+            requestAutoplay();
+          }
+        };
+
+        items.forEach((item, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "spotlight-chip";
+          button.textContent = item.label;
+          button.setAttribute("role", "tab");
+          button.setAttribute("aria-selected", "false");
+          button.addEventListener("click", () => setCurrent(index));
+          selector.appendChild(button);
+          selectorButtons.push(button);
         });
+
+        prevButton.addEventListener("click", () => setCurrent(currentIndex - 1));
+        nextButton.addEventListener("click", () => setCurrent(currentIndex + 1));
+
+        const toggleFullscreen = async () => {
+          try {
+            if (document.fullscreenElement) {
+              await document.exitFullscreen();
+              return;
+            }
+
+            if (frame.requestFullscreen) {
+              await frame.requestFullscreen();
+              return;
+            }
+
+            if (video.webkitEnterFullscreen) {
+              video.webkitEnterFullscreen();
+            }
+          } catch {
+            // Ignore fullscreen rejections from browsers that gate the API.
+          }
+        };
+
+        video.addEventListener("dblclick", async (event) => {
+          event.preventDefault();
+          await toggleFullscreen();
+        });
+
+        video.addEventListener("loadedmetadata", () => {
+          revealFirstFrame();
+          requestAutoplay();
+        });
+
+        video.addEventListener("loadeddata", revealFirstFrame);
+        video.addEventListener("canplay", requestAutoplay);
+        video.addEventListener("canplaythrough", requestAutoplay);
+
+        video.addEventListener("pause", () => {
+          if (suppressPauseTracking || video.ended) {
+            return;
+          }
+          cancelAutoplayForCurrentItem();
+        });
+
+        video.addEventListener("play", () => {
+          userPausedCurrentItem = false;
+        });
+
+        visibilityResumeHandlers.push(requestAutoplay);
+
+        setCurrent(0);
+
+        return {
+          root: wrapper,
+          play: () => {
+            shouldAutoplay = true;
+            userPausedCurrentItem = false;
+            requestAutoplay();
+          },
+          pause: () => {
+            shouldAutoplay = false;
+            cancelAutoplayForCurrentItem();
+            suppressPauseTracking = true;
+            video.pause();
+            suppressPauseTracking = false;
+          }
+        };
+      };
+
+      const demoViewer = createSpotlightViewer({
+        title: "demo videos",
+        items: demoVideos,
+        autoplay: true,
+        aspectRatio: "2808 / 1192",
+        variant: "demo"
+      });
+      demoRoot.appendChild(demoViewer.root);
+      window.requestAnimationFrame(() => {
+        demoViewer.play();
+      });
+
+      comparisonGroups.forEach((group) => {
+        const details = document.createElement("details");
+        details.className = "comparison-block";
+        details.open = group.open;
+
+        const summary = document.createElement("summary");
+        const summaryText = document.createElement("span");
+        summaryText.textContent = group.title;
+        summary.appendChild(summaryText);
+        details.appendChild(summary);
+
+        const panel = document.createElement("div");
+        panel.className = "comparison-panel";
+        const viewer = createSpotlightViewer({
+          title: group.title,
+          items: group.files.map((fileName) => ({
+            label: `Seq ${fileName}`,
+            src: `${group.path}/${fileName}.webm`
+          })),
+          autoplay: group.open,
+          aspectRatio: group.aspectRatio,
+          variant: "qualitative"
+        });
+        panel.appendChild(viewer.root);
+        details.appendChild(panel);
+        comparisonRoot.appendChild(details);
+
+        details.addEventListener("toggle", () => {
+          if (details.open) {
+            viewer.play();
+          } else {
+            viewer.pause();
+          }
+        });
+
+        if (details.open) {
+          window.requestAnimationFrame(() => {
+            viewer.play();
+          });
+        }
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState !== "visible") {
+          return;
+        }
+        visibilityResumeHandlers.forEach((resumeAutoplay) => resumeAutoplay());
+      });
+
+      document.querySelectorAll(".copy-button").forEach((button) => {
+        const originalText = button.textContent;
+        button.addEventListener("click", async () => {
+          const targetId = button.dataset.copyTarget;
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          try {
+            await navigator.clipboard.writeText(target.textContent);
+            button.textContent = "Copied";
+          } catch {
+            button.textContent = "Failed";
+          }
+
+          window.setTimeout(() => {
+            button.textContent = originalText;
+          }, 1400);
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
