@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Academic homepage of Hongming Fu, featuring research interests, publications, education, and honors."
+    />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>Hongming Fu | Academic Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/home.css?v=14" />
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+        } catch (_) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site_header">
+      <div class="shell">
+        <a class="site_brand" href="#top">Hongming Fu</a>
+        <div class="site_actions">
+          <nav class="site_nav" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#publications">Publications</a>
+            <a href="#education">Education</a>
+          </nav>
+          <button class="theme_toggle" type="button" aria-label="Switch color theme" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page" id="top">
+      <section class="intro">
+        <h1>Hongming Fu</h1>
+        <p class="intro_role">Ph.D. Student in Computer Science, Shanghai Jiao Tong University</p>
+        <p class="intro_links">
+          <a href="mailto:hmfu2024@gmail.com" target="_blank" rel="noreferrer">hmfu2024@gmail.com</a>
+          <span>·</span>
+          <a
+            href="https://scholar.google.com/citations?hl=en-US&amp;user=QFFv_iwAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"
+            target="_blank"
+            rel="noreferrer"
+            >Google Scholar</a
+          >
+          <span>·</span>
+          <a href="https://github.com/Frank-F2022" target="_blank" rel="noreferrer">GitHub</a>
+        </p>
+      </section>
+
+      <section class="section" id="about">
+        <h2>
+          <svg class="section_icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.2"></circle>
+            <path d="M6.7 19c1.1-3.1 3-4.6 5.3-4.6s4.2 1.5 5.3 4.6"></path>
+          </svg>
+          <span>About</span>
+        </h2>
+        <p>
+          I am a Ph.D. student at
+          <a href="https://en.sjtu.edu.cn/" target="_blank" rel="noreferrer">Shanghai Jiao Tong University</a>, advised by
+          <a href="https://www.bozhao.me/" target="_blank" rel="noreferrer">Prof. Bo Zhao</a>.
+        </p>
+        <p>
+          My research interests center on egocentric vision, human motion, and hand-object interaction, with a broader interest in
+          real-to-sim data acquisition methods for embodied intelligence.
+        </p>
+        <p>
+          Discussions and collaborations are always welcome; feel free to reach out.
+        </p>
+      </section>
+
+      <section class="section" id="publications">
+        <h2>
+          <svg class="section_icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 5.2h5.1c1.3 0 2.1.8 2.1 2.1v13c0-1.2-.8-2-2.1-2H6z"></path>
+            <path d="M18 5.2h-5.1c-1.3 0-2.1.8-2.1 2.1v13c0-1.2.8-2 2.1-2H18z"></path>
+          </svg>
+          <span>Publications</span>
+        </h2>
+        <p class="publication_note">*: joint first author; † Project Lead; ✉ corresponding author(s).</p>
+        <div class="entry_list">
+          <article class="entry">
+            <p class="entry_meta">2026 · arXiv</p>
+            <h3>EgoFound3R: End-to-End Egocentric Hand Reconstruction in World Space with Point-Wise Interaction Attributes</h3>
+            <p class="entry_authors">
+              <strong>Hongming Fu</strong>, Jingcheng Shi, Wenjia Wang, Binhua Zuo, Bo Zhao<sup>✉</sup>
+            </p>
+            <p class="entry_venue">arXiv preprint</p>
+            <p>
+              A unified end-to-end model for world-space egocentric hand reconstruction that predicts point-wise visibility,
+              contact, and distance in a single pass, without separate detection, camera tracking, or contact stages.
+            </p>
+            <p class="inline_links">
+              <span class="link_placeholder">arXiv (coming soon)</span>
+              <span>/</span>
+              <a href="https://mint-sjtu.github.io/EgoFound3R.io/" target="_blank" rel="noreferrer">Project Page</a>
+              <span>/</span>
+              <a href="https://github.com/MINT-SJTU/EgoFound3R" target="_blank" rel="noreferrer">Code</a>
+            </p>
+          </article>
+
+          <article class="entry">
+            <p class="entry_meta">2026 · arXiv</p>
+            <h3>EgoGrasp: World-Space Hand-Object Interaction Estimation from Egocentric Videos</h3>
+            <p class="entry_authors">
+              <strong>Hongming Fu</strong>, Wenjia Wang<sup>†</sup>, Xiaozhen Qiao, Rolandos Alexandros Potamias, Taku Komura,
+              Shuo Yang, Zheng Liu, Bo Zhao<sup>✉</sup>
+            </p>
+            <p class="entry_venue">arXiv preprint</p>
+            <p>
+              A framework for world-space hand-object interaction reconstruction from egocentric videos, built on spatial
+              intelligence preprocessing, upper-body HOI diffusion priors, and test-time optimization.
+            </p>
+            <p class="inline_links">
+              <a href="projects/EgoGrasp/index.html" target="_blank" rel="noreferrer">Project Page</a>
+              <span>/</span>
+              <a href="https://arxiv.org/abs/2601.01050" target="_blank" rel="noreferrer">arXiv</a>
+              <span>/</span>
+              <a href="https://github.com/MINT-SJTU/EgoGrasp" target="_blank" rel="noreferrer">Code</a>
+            </p>
+          </article>
+
+          <article class="entry">
+            <p class="entry_meta">2026 · ACL Findings</p>
+            <h3>MergeIT: From Selection to Merging for Efficient Instruction Tuning</h3>
+            <p class="entry_authors">Hongyi Cai, Yuqian Fu, <strong>Hongming Fu</strong>, Bo Zhao<sup>✉</sup></p>
+            <p class="entry_venue">Findings of the Association for Computational Linguistics</p>
+            <p>
+              A data-centric instruction tuning method that selects diverse IFT data and merges similar samples through prompting,
+              achieving stronger fine-tuning performance with a much smaller training set.
+            </p>
+            <p class="inline_links">
+              <a href="https://arxiv.org/abs/2503.00034" target="_blank" rel="noreferrer">Paper</a>
+            </p>
+          </article>
+
+          <article class="entry">
+            <p class="entry_meta">2025 · CVPR</p>
+            <h3>Every SAM Drop Counts: Embracing Semantic Priors for Multi-Modality Image Fusion and Beyond</h3>
+            <p class="entry_authors">
+              Guanyao Wu, Haoyu Liu, <strong>Hongming Fu</strong>, Yichuan Peng, Jinyuan Liu, Xin Fan,
+              Risheng Liu<sup>✉</sup>
+            </p>
+            <p class="entry_venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition</p>
+            <p>
+              A multimodal image fusion framework that uses Segment Anything priors, bi-level optimization, and downstream task
+              feedback to improve visual quality and semantic perception efficiency.
+            </p>
+            <p class="inline_links">
+              <a href="https://arxiv.org/abs/2503.01210" target="_blank" rel="noreferrer">Paper</a>
+            </p>
+          </article>
+
+          <article class="entry">
+            <p class="entry_meta">2024 · ICASSP</p>
+            <h3>Segmentation-driven Infrared and Visible Image Fusion via Transformer-enhanced Architecture Searching</h3>
+            <p class="entry_authors"><strong>Hongming Fu</strong>, Guanyao Wu, Zhu Liu, Tiantian Yan, Jinyuan Liu<sup>✉</sup></p>
+            <p class="entry_venue">IEEE International Conference on Acoustics, Speech and Signal Processing</p>
+            <p>
+              A neural architecture search approach for infrared-visible image fusion, designed to balance upstream fusion quality
+              and downstream semantic segmentation performance.
+            </p>
+            <p class="inline_links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/10448114" target="_blank" rel="noreferrer">Paper</a>
+            </p>
+          </article>
+
+          <article class="entry">
+            <p class="entry_meta">2024 · AAAI</p>
+            <h3>Hybrid-Supervised Dual-Search: Leveraging Automatic Learning for Loss-free Multi-Exposure Image Fusion</h3>
+            <p class="entry_authors">Guanyao Wu, <strong>Hongming Fu</strong>, Jinyuan Liu, Long Ma, Xin Fan, Risheng Liu<sup>✉</sup></p>
+            <p class="entry_venue">AAAI Conference on Artificial Intelligence</p>
+            <p>
+              A dual-search framework that combines neural architecture search and loss-function search for multi-exposure image
+              fusion, improving visual quality through automatic optimization.
+            </p>
+            <p class="inline_links">
+              <a href="https://ojs.aaai.org/index.php/AAAI/article/view/28413" target="_blank" rel="noreferrer">Paper</a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <h2>
+          <svg class="section_icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 9.3 12 5l8 4.3-8 4.3z"></path>
+            <path d="M7.6 11.3v4.1c1.5 1.4 3 2 4.4 2s2.9-.6 4.4-2v-4.1"></path>
+            <path d="M19.5 10.1v4.5"></path>
+          </svg>
+          <span>Education</span>
+        </h2>
+        <div class="entry_list">
+          <article class="entry">
+            <p class="entry_meta">Sep 2025 - Now</p>
+            <h3>Ph.D. in Computer Science</h3>
+            <p>
+              <a href="https://en.sjtu.edu.cn/" target="_blank" rel="noreferrer">Shanghai Jiao Tong University</a>. Advisor:
+              <a href="https://www.bozhao.me/" target="_blank" rel="noreferrer">Prof. Bo Zhao</a>.
+            </p>
+          </article>
+
+          <article class="entry">
+            <p class="entry_meta">Sep 2021 - Jun 2025</p>
+            <h3>B.E. in Software Engineering</h3>
+            <p><a href="https://www.dlut.edu.cn/" target="_blank" rel="noreferrer">Dalian University of Technology</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const button = document.querySelector(".theme_toggle");
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+        const setTheme = (theme) => {
+          root.dataset.theme = theme;
+          if (button) {
+            button.textContent = theme === "dark" ? "Light" : "Dark";
+            button.setAttribute("aria-pressed", String(theme === "dark"));
+          }
+          if (themeMeta) {
+            themeMeta.setAttribute("content", theme === "dark" ? "#151514" : "#f7f7f2");
+          }
+          try {
+            localStorage.setItem("theme", theme);
+          } catch (_) {
+            // The static page should still work when storage is unavailable.
+          }
+        };
+
+        setTheme(root.dataset.theme === "dark" ? "dark" : "light");
+
+        if (button) {
+          button.addEventListener("click", () => {
+            setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
