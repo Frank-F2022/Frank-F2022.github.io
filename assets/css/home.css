@@ -351,11 +351,6 @@ ol {
   margin: 0 0.35rem;
 }
 
-.inline_links .link_placeholder {
-  color: var(--soft);
-  cursor: default;
-}
-
 .contact_section {
   padding-bottom: 0;
 }
